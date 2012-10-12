@@ -5,6 +5,10 @@ module ApiProxy
 
   class App < Sinatra::Application
 
+    before do
+      content_type :json
+    end
+
     get '/:api/:template' do |api, template|
       connector = BaseApiProxy.find(api)
       @result = connector.process(params)
