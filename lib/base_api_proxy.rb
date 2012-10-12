@@ -7,6 +7,11 @@ module ApiProxy
       end
     end
 
+    def self.config
+      class_name = self.name.split('::').last.downcase
+      @@config ||= YAML::load(File.open("config/#{class_name}.yaml", 'rb').read)
+    end
+
     private
 
     def self.connector_exists?(api_name)
