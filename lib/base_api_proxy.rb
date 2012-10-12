@@ -3,7 +3,7 @@ module ApiProxy
     def self.find(api_name)
       if connector_exists?(api_name)
         require "connectors/#{api_name}.rb"
-        ApiProxy.const_get api_name.camelize
+        api_name.classify.constantize
       end
     end
 

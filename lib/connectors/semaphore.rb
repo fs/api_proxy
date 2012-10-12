@@ -11,7 +11,6 @@ module ApiProxy
         branch_id: params[:branch_id]
       )
       url = Mustache.render(API_ENDPOINTS[params[:template]], request_params)
-      puts url
       response = HTTParty.get url
       response.body
     end
