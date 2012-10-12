@@ -9,7 +9,7 @@ module ApiProxy
 
     def self.config
       class_name = self.name.demodulize.underscore
-      @@config ||= YAML::load(File.open("config/#{class_name}.yaml", 'rb').read)
+      @@config ||= YAML::load(File.open("config/#{class_name}.yaml", 'rb').read).symbolize_keys
     end
 
     private

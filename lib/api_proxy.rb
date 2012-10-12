@@ -10,6 +10,7 @@ module ApiProxy
     end
 
     get '/:api/:template' do |api, template|
+      params.symbolize_keys!
       connector = BaseApiProxy.find(api)
       @result = connector.process(params)
       mustache "#{api}/#{template}".to_sym
